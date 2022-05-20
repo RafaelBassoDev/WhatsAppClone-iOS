@@ -44,11 +44,4 @@ class MessageTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        profilePicture.frame = CGRect(x: 5, y: 5, width: 40, height: 40)
-
-    }
-    
 }
