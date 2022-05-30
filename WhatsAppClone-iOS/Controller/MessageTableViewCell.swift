@@ -12,12 +12,23 @@ class MessageTableViewCell: UITableViewCell {
     }()
     
     private let profileNameLabel: UILabel = {
-       let label = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 20))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 20))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Name"
         label.textAlignment = .left
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.layer.masksToBounds = true
+        return label
+    }()
+    
+    private let lastMessageLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 20))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Last message goes here, lorem ipsum dolor sit amet"
+        label.textAlignment = .left
+        label.textColor = .lightGray
+        label.font = UIFont.boldSystemFont(ofSize: 14)
         label.layer.masksToBounds = true
         return label
     }()
@@ -30,6 +41,7 @@ class MessageTableViewCell: UITableViewCell {
         contentView.backgroundColor = .systemBackground
         contentView.addSubview(profilePicture)
         contentView.addSubview(profileNameLabel)
+        contentView.addSubview(lastMessageLabel)
 
         profilePicture.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
         profilePicture.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, constant: -30).isActive = true
@@ -38,6 +50,10 @@ class MessageTableViewCell: UITableViewCell {
         
         profileNameLabel.topAnchor.constraint(equalTo: profilePicture.topAnchor).isActive = true
         profileNameLabel.leadingAnchor.constraint(equalTo: profilePicture.trailingAnchor, constant: 20).isActive = true
+        
+        lastMessageLabel.leadingAnchor.constraint(equalTo: profilePicture.trailingAnchor, constant: 20).isActive = true
+        lastMessageLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -30).isActive = true
+
     }
     
     required init?(coder: NSCoder) {
